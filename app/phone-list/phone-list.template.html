@@ -1,0 +1,31 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="row">
+				<p class="col-md-8">
+					Buscar: <input ng-model="$ctrl.query" />
+				</p>
+				<p class="col-md-4">
+					Ordenar:
+					<select ng-model="$ctrl.orderProp">
+						<option value="name">Nombre</option>
+						<option value="age">Año</option>
+					</select>
+				</p>
+			</div>
+			<hr />
+			<p align="center">Nº total de móviles: {{$ctrl.phones.length}}</p>
+		</div>
+		<div class="col-md-9">
+			<ul class="phones">
+				<li class="list-group-item phone-list-item thumbnail" ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+					<a href="#!/phones/{{phone.id}}" class="thumb">
+						<img ng-src="{{phone.imageUrl}}" alt="{{phone.name}}" />
+					</a>
+					<a href="#!/phones/{{phone.id}}"><strong>{{phone.name}}</strong></a>
+					<p>{{phone.snippet}}</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
